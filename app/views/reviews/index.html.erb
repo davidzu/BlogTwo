@@ -1,0 +1,8 @@
+<h1>Reseñas de Libros</h1>
+
+<% @reviews.each do |reviews| %>
+	<p><%= reviews.title %></p>
+	<p><%= reviews.content %></p>
+	<p><%= image_tag reviews.thumb_image %></p>
+<hr>
+<% end %>

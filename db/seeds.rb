@@ -44,8 +44,8 @@ puts "Se han creado 5 Etiquetas"
 	    structura política del Valle de México durante la conquista como uno de los factores 
 	    del mestizaje.El bajío es el origen de la independencia por ser la región más desigual 
 	    de la nueva España",
-	    main_image: "https://place-hold.it/300x150",
-	    thumb_image: "https://place-hold.it/600x400"
+	    main_image: "https://place-hold.it/600x400",
+	    thumb_image: "https://place-hold.it/300x150"
 		)
 end
 
