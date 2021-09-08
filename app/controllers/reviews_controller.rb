@@ -22,4 +22,28 @@ class ReviewsController < ApplicationController
   def edit
   	@review = Review.find(params[:id])
   end
+
+  def update
+  	@review = Review.find(params[:id])
+
+    respond_to do |format|
+      if @review.update(params.require(:review).permit(:title, :content, :thumb_image))
+        format.html { redirect_to reviews_path, notice: "La Reseña ha sido editada correctamente." }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def show
+  	@review = Review.find(params[:id])
+  end
+
+  def destroy
+  	@review = Review.find(params[:id])
+  	@review.destroy
+    respond_to do |format|
+      format.html { redirect_to reviews_url, notice: "La reseña ha sido borrada." }
+    end
+  end
 end

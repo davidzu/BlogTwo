@@ -1,8 +1,12 @@
 <h1>Reseñas de Libros</h1>
 
-<% @reviews.each do |reviews| %>
-	<p><%= reviews.title %></p>
-	<p><%= reviews.content %></p>
-	<p><%= image_tag reviews.thumb_image %></p>
+<%= link_to "Escribir una nueva Reseña", new_review_path %>
+
+<% @reviews.each do |review| %>
+	<p><%= link_to review.title, review_path(review) %></p>
+	<p><%= review.content %></p>
+	<p><%= image_tag review.thumb_image %></p>
+	<%= link_to "Editar", edit_review_path(review.id) %>
+	<%= link_to "Borrar", review, method: :delete, data: { confirm: 'Are you sure?' } %>
 <hr>
 <% end %>
