@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
 
 	def new
 		@review = Review.new
+    3.times {@review_item.tags.build}
 	end
 
 	def create
