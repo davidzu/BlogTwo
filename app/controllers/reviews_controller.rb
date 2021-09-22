@@ -5,11 +5,11 @@ class ReviewsController < ApplicationController
 
 	def new
 		@review = Review.new
-    3.times {@review_item.tags.build}
+    3.times { @review.tags.build }
 	end
 
 	def create
-    @review = Review.new(params.require(:review).permit(:title, :content, :thumb_image))
+    @review = Review.new(params.require(:review).permit(:title, :content, tags_attributes: [:name]))
 
     respond_to do |format|
       if @review.save
