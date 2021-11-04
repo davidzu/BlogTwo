@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
 	end
 
 	def create
-    @review = Review.new(params.require(:review).permit(:title, :content, tags_attributes: [:name]))
+    @review = Review.new(review_params)
 
     respond_to do |format|
       if @review.save
@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
   	@review = Review.find(params[:id])
 
     respond_to do |format|
-      if @review.update(params.require(:review).permit(:title, :content, :thumb_image))
+      if @review.update(review_params)
         format.html { redirect_to reviews_path, notice: "La Reseña ha sido editada correctamente." }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -47,4 +47,12 @@ class ReviewsController < ApplicationController
       format.html { redirect_to reviews_url, notice: "La reseña ha sido borrada." }
     end
   end
+
+  private
+
+  def review_params
+    params.require(:review).permit(:title, :content, tags_attributes: [:name])
+  end
+
+
 end

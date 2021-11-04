@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
   resources :reviews
+
+  get 'review/:id', to: 'reviews#show', as: 'review_show'
   
   resources :blogs do
   	member do
@@ -9,5 +11,6 @@ Rails.application.routes.draw do
   end
   
   get 'about', to: 'pages#about'
+
   root to: 'pages#home'
 end
